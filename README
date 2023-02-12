@@ -1,0 +1,43 @@
+///////////////////////////////////////////////////////////////////////////////
+• wordle.c:
+
+! The implementation of the Wordle game!
+
+-> Observations:
+        - The graphic interface was created through the "ncurses" library;
+        - When running the game, a start menu will be displayed (menu() function)
+        in which the player can start a new game or exit the application;
+        - If "New Game" is selected, the game() function will be called which will generate it
+        the game board and will wait for the input from the keyboard;
+        - At the beginning of the game, a random word will be chosen from the dictionary,
+        using the rand() command, starting from seed time(0), that is
+        current time instant;
+        - Initially the boxes are printed, and then based on the received input
+        the following actions will be taken:
+                1. If a lowercase letter is entered, it will be inserted
+                word and it will be displayed (as long as it is not exceeded
+                the length of 5 letters of the word);
+                2. If BACKSPACE is entered, the last letter a will be deleted
+                the word both from memory and on the screen (if not already
+                there is no letter to delete in the word, nothing happens);
+                3. If ENTER is entered, check if there are enough
+                letters in the word, if yes, the function is called
+                checkWord(), in negative case a message is displayed;
+                4. If ":" is entered, the menu opens (called
+                menu function);
+                5. If any other character is entered, nothing happens;
+        - The checkWord() function checks if the entered word is the one you are looking for,
+        in the affirmative case it calls the gameWon() function, in the negative case it colors
+        the letters based on the rules of the game. Also, if it was introduced
+        the last word, and this is not the one searched for, the function is called
+        gameLost();
+        - The gameWon() function generates the screen where the player is announced
+        that he just won and gets the option to start a new game or
+        to close the game;
+        - The gameLost() function generates the screen where the player is announced
+        that he just lost, the word that had to be found is displayed and he receives it
+        the option to start a new game or close the game;
+        - The choiceBox() function generates the choice box containing "New Game"
+        and "Quit" related to the functions menu(), gameWon() and gameLost();
+
+///////////////////////////////////////////////////////////////////////////////
